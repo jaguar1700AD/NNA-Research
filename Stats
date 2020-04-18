@@ -4,3 +4,7 @@ Conv
 
 FC
 1000 - 70-80% Hits
+
+
+80% global pruning:
+52.12 % -> 55.06 % (Baseline: 57.09 %)
