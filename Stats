@@ -8,3 +8,4 @@ FC
 
 80% global pruning:
 52.12 % -> 55.07 % (Baseline: 57.09 %)
+After wt sharing (all 32) - 53.97 %
