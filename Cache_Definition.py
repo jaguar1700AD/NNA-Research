@@ -25,7 +25,8 @@ import sys
 class cache:
     
     def __init__(self, device):
-        self.size = 10 ** 4
+        
+        self.size = 10 ** 3
         self.W = torch.randn(self.size, device = device)
         self.A = torch.randn(self.size, device = device)
         self.time = torch.ones(self.size, device = device, dtype = torch.int32)
@@ -35,7 +36,8 @@ class cache:
         self.device = device
         
 def approx(cache, orig_W, orig_A):
-
+    print('Called')
+    
     s1 = orig_W.shape
     s2 = orig_A.shape
 
@@ -212,9 +214,11 @@ def approx(cache, orig_W, orig_A):
     hits = cache.hits.item()
     misses = cache.misses.item()
 
-    cache.hits = torch.tensor(0, device = cache.device, dtype = torch.int64).view(1)
-    cache.misses = torch.tensor(0, device = cache.device, dtype = torch.int64).view(1)
-
+    #cache.hits = torch.tensor(0, device = cache.device, dtype = torch.int64).view(1)
+    #cache.misses = torch.tensor(0, device = cache.device, dtype = torch.int64).view(1)
+    cache.hits -= hits
+    cache.misses -= misses
+    
     return orig_W.view(s1), orig_A.view(s2), hits, misses
             
 
